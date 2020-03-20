@@ -13,6 +13,7 @@ const PADDLE_WIDTH = 100;
 const PADDGE_MARGIN_BOTTOM = 50;
 const PADDLE_HEIGHT = 20;
 const BALL_RADIUS = 8;
+const LIFE = 3; // player has three lifes
 let leftArrow = false;
 let rightArrow = false;
 
@@ -99,6 +100,19 @@ function ballWallCollision() {
   if (ball.y - ball.radius < 0) {
     ball.dy = -ball.dy;
   }
+
+  if (ball.y + ball.radius > cvs.height) {
+    LIFE--; // lose life
+    resetBall();
+  }
+}
+
+// reset the ball
+function resetBall() {
+  ball.x = cvs.width / 2;
+  ball.y = paddle.y - BALL_RADIUS;
+  ball.dx = 3;
+  ball.dy = -3;
 }
 
 // draw function
