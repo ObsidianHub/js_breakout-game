@@ -70,6 +70,20 @@ const ball = {
   dy: -3
 };
 
+// draw the ball
+function drawBall() {
+  ctx.beginPath();
+
+  ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+  ctx.fillStyle = "#ffcd05";
+  ctx.fill();
+
+  ctx.strokeStyle = "#2e3548";
+  ctx.stroke();
+
+  ctx.closePath();
+}
+
 // draw function
 function draw() {
   drawPaddle();
