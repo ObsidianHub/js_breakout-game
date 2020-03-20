@@ -12,6 +12,8 @@ ctx.lineWidth = 3;
 const PADDLE_WIDTH = 100;
 const PADDGE_MARGIN_BOTTOM = 50;
 const PADDLE_HEIGHT = 20;
+let leftArrow = false;
+let rightArrow = false;
 
 // create the paddle
 const paddle = {
@@ -37,6 +39,14 @@ document.addEventListener("keydown", function(event) {
     leftArrow = true;
   } else if (event.keyCode == 39) {
     rightArrow = true;
+  }
+});
+
+document.addEventListener("keyup", function(event) {
+  if (event.keyCode == 37) {
+    leftArrow = false;
+  } else if (event.keyCode == 39) {
+    rightArrow = false;
   }
 });
 
