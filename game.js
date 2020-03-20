@@ -12,6 +12,7 @@ ctx.lineWidth = 3;
 const PADDLE_WIDTH = 100;
 const PADDGE_MARGIN_BOTTOM = 50;
 const PADDLE_HEIGHT = 20;
+const BALL_RADIUS = 8;
 let leftArrow = false;
 let rightArrow = false;
 
@@ -58,6 +59,16 @@ function movePaddle() {
     paddle.x -= paddle.dx;
   }
 }
+
+// create the ball
+const ball = {
+  x: cvs.width / 2,
+  y: paddle.y - BALL_RADIUS,
+  radius: BALL_RADIUS,
+  speed: 4,
+  dx: 3,
+  dy: -3
+};
 
 // draw function
 function draw() {
