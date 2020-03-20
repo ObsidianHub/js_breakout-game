@@ -84,13 +84,38 @@ function drawBall() {
   ctx.closePath();
 }
 
+// move the ball
+function moveBall() {
+  ball.x += ball.dx;
+  ball.y += ball.dy;
+}
+
+// ball and wall collision detection
+function ballWallCollision() {
+  if (ball.x + ball.radius > cvs.width || ball.x - ball.radius < 0) {
+    ball.dx = -ball.dx;
+  }
+
+  if (ball.y - ball.radius < 0) {
+    ball.dy = -ball.dy;
+  }
+}
+
 // draw function
 function draw() {
   drawPaddle();
+
+  drawBall();
 }
 
 // update game function
-function update() {}
+function update() {
+  movePaddle();
+
+  moveBall();
+
+  ballWallCollision();
+}
 
 // game loop
 function loop() {
