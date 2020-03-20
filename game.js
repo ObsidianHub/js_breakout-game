@@ -5,6 +5,9 @@ const ctx = cvs.getContext("2d");
 // add border to canvas
 cvs.style.border = "1px solid #off";
 
+// make line when drawing to canvas
+ctx.lineWidth = 3;
+
 // game variables and constants
 const PADDLE_WIDTH = 100;
 const PADDGE_MARGIN_BOTTOM = 50;
@@ -28,4 +31,21 @@ function drawPaddle() {
   ctx.strokeRect(paddle.x, paddle.y, paddle.width, paddle.height);
 }
 
-drawPaddle();
+// draw function
+function draw() {
+  drawPaddle();
+}
+
+// update game function
+function update() {}
+
+// game loop
+function loop() {
+  draw();
+
+  update();
+
+  requestAnimationFrame(loop);
+}
+
+loop();
