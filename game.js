@@ -31,6 +31,15 @@ function drawPaddle() {
   ctx.strokeRect(paddle.x, paddle.y, paddle.width, paddle.height);
 }
 
+// control the paddle
+document.addEventListener("keydown", function(event) {
+  if (event.keyCode == 37) {
+    leftArrow = true;
+  } else if (event.keyCode == 39) {
+    rightArrow = true;
+  }
+});
+
 // draw function
 function draw() {
   drawPaddle();
