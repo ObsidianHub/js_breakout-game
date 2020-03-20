@@ -50,6 +50,15 @@ document.addEventListener("keyup", function(event) {
   }
 });
 
+// move paddle
+function movePaddle() {
+  if (rightArrow && paddle.x + paddle.width < cvs.width) {
+    paddle.x += paddle.dx;
+  } else if (leftArrow && paddle.x > 0) {
+    paddle.x -= paddle.dx;
+  }
+}
+
 // draw function
 function draw() {
   drawPaddle();
