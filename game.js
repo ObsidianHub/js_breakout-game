@@ -67,7 +67,7 @@ const ball = {
   y: paddle.y - BALL_RADIUS,
   radius: BALL_RADIUS,
   speed: 4,
-  dx: 3,
+  dx: 3 * (Math.random() * 2 - 1),
   dy: -3
 };
 
@@ -115,6 +115,19 @@ function resetBall() {
   ball.dy = -3;
 }
 
+// ball and paddle collision
+function ballPaddleCollision() {
+  if (
+    ball.x < paddle.x + paddle.width &&
+    ball.x > paddle.x &&
+    paddle.y < paddle.y + paddle.height &&
+    ball.y > paddle.y
+  ) {
+    ball.dx = -ball.dx;
+    ball.dy = -ball.dy;
+  }
+}
+
 // draw function
 function draw() {
   drawPaddle();
@@ -129,6 +142,8 @@ function update() {
   moveBall();
 
   ballWallCollision();
+
+  ballPaddleCollision();
 }
 
 // game loop
