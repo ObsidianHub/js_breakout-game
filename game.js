@@ -13,7 +13,9 @@ const PADDLE_WIDTH = 100;
 const PADDGE_MARGIN_BOTTOM = 50;
 const PADDLE_HEIGHT = 20;
 const BALL_RADIUS = 8;
-const LIFE = 3; // player has three lifes
+let LIFE = 3; // player has three lifes
+let SCORE = 0;
+const SCORE_UNIT = 10;
 let leftArrow = false;
 let rightArrow = false;
 
@@ -187,11 +189,35 @@ function drawBricks() {
   }
 }
 
+// ball brick collision
+function ballBrickCollision() {
+  for (let r = 0; r < brick.row; r++) {
+    for (let c = 0; c < brick.column; c++) {
+      let b = bricks[r][c];
+
+      if (b.status) {
+        if (
+          ball.x + ball.radius > b.x &&
+          ball.x - ball.radius < b.x + brick.width &&
+          ball.y + ball.radius > b.y &&
+          ball.y - ball.radius < b.y + brick.height
+        ) {
+          ball.dy = -ball.dy;
+          b.status = false; // the brick is broken
+          SCORE += SCORE_UNIT;
+        }
+      }
+    }
+  }
+}
+
 // draw function
 function draw() {
   drawPaddle();
 
   drawBall();
+
+  drawBricks();
 }
 
 // update game function
@@ -203,6 +229,8 @@ function update() {
   ballWallCollision();
 
   ballPaddleCollision();
+
+  ballBrickCollision();
 }
 
 // game loop
