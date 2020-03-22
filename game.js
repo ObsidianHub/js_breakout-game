@@ -211,6 +211,17 @@ function ballBrickCollision() {
   }
 }
 
+// show game stats
+function showGameStats(text, textX, textY, img, imgX, imgY) {
+  // draw text
+  ctx.fillStyle = "#fff";
+  ctx.font = "25px Germania One";
+  ctx.fillText(text, textX, textY);
+
+  // draw image
+  ctx.drawImage(img, imgX, imgY, (width = 25), (height = 25));
+}
+
 // draw function
 function draw() {
   drawPaddle();
