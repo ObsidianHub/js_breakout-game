@@ -18,6 +18,7 @@ let SCORE = 0;
 const SCORE_UNIT = 10;
 let LEVEL = 1;
 const MAX_LEVEL = 3;
+let GAME_OVER = false;
 let leftArrow = false;
 let rightArrow = false;
 
@@ -240,6 +241,13 @@ function draw() {
   showGameStats(LEVEL, cvs.width / 2, 25, LEVEL_IMG, cvs.width / 2 - 30, 5);
 }
 
+// game over
+function gameOver() {
+  if (LIFE <= 0) {
+    GAME_OVER = true;
+  }
+}
+
 // update game function
 function update() {
   movePaddle();
@@ -251,6 +259,8 @@ function update() {
   ballPaddleCollision();
 
   ballBrickCollision();
+
+  gameOver();
 }
 
 // game loop
@@ -262,7 +272,9 @@ function loop() {
 
   update();
 
-  requestAnimationFrame(loop);
+  if (!GAME_OVER) {
+    requestAnimationFrame(loop);
+  }
 }
 
 loop();
