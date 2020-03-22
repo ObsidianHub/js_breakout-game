@@ -251,6 +251,7 @@ function draw() {
 // game over
 function gameOver() {
   if (LIFE <= 0) {
+    showYouLose();
     GAME_OVER = true;
   }
 }
@@ -270,6 +271,7 @@ function levelUp() {
     WIN.play();
 
     if (LEVEL >= MAX_LEVEL) {
+      showYouWon();
       GAME_OVER = true;
       return;
     }
