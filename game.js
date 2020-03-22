@@ -342,3 +342,20 @@ const gameover = document.getElementById("gameover");
 const youwon = document.getElementById("youwon");
 const youlose = document.getElementById("youlose");
 const restart = document.getElementById("restart");
+
+// click on play again button
+restart.addEventListener("click", function() {
+  location.reload(); // reload the page
+});
+
+// show you won message
+function showYouWon() {
+  gameover.style.display = "block";
+  youwon.style.display = "block";
+}
+
+// show you lose message
+function showYouLose() {
+  gameover.style.display = "block";
+  youlose.style.display = "block";
+}
