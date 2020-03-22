@@ -233,11 +233,11 @@ function draw() {
   drawBricks();
 
   // show score
-  showGameStats(SCORE, textX, textY, img, imgX, imgY);
+  showGameStats(SCORE, 35, 25, SCORE_IMG, 5, 5);
   // show lifes
-  showGameStats(LIFE, textX, textY, img, imgX, imgY);
+  showGameStats(LIFE, cvs.width - 25, 25, LIFE_IMG, cvs.width - 55, 5);
   // show level
-  showGameStats(LEVEL, textX, textY, img, imgX, imgY);
+  showGameStats(LEVEL, cvs.width / 2, 25, LEVEL_IMG, cvs.width / 2 - 30, 5);
 }
 
 // update game function
