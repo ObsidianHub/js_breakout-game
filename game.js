@@ -144,7 +144,7 @@ function ballPaddleCollision() {
 
 // create the bricks
 const brick = {
-  row: 3,
+  row: 1,
   column: 5,
   width: 55,
   height: 20,
@@ -248,6 +248,30 @@ function gameOver() {
   }
 }
 
+// level up
+function levelUp() {
+  let isLevelDone = true;
+
+  // check if all the bricks are broken
+  for (let r = 0; r < brick.row; r++) {
+    for (let c = 0; c < brick.column; c++) {
+      isLevelDone = isLevelDone && !bricks[r][c].status;
+    }
+  }
+
+  if (isLevelDone) {
+    if (LEVEL >= MAX_LEVEL) {
+      GAME_OVER = true;
+      return;
+    }
+    brick.row++;
+    createBricks();
+    ball.speed += 0.5;
+    resetBall();
+    LEVEL++;
+  }
+}
+
 // update game function
 function update() {
   movePaddle();
@@ -261,6 +285,8 @@ function update() {
   ballBrickCollision();
 
   gameOver();
+
+  levelUp();
 }
 
 // game loop
