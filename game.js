@@ -335,3 +335,10 @@ function audioManager() {
   WIN.muted = WIN.muted ? false : true;
   LIFE_LOST.muted = LIFE_LOST.muted ? false : true;
 }
+
+// show game over message
+// select elements
+const gameover = document.getElementById("gameover");
+const youwon = document.getElementById("youwon");
+const youlose = document.getElementById("youlose");
+const restart = document.getElementById("restart");
