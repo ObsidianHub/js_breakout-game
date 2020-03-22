@@ -16,6 +16,8 @@ const BALL_RADIUS = 8;
 let LIFE = 3; // player has three lifes
 let SCORE = 0;
 const SCORE_UNIT = 10;
+let LEVEL = 1;
+const MAX_LEVEL = 3;
 let leftArrow = false;
 let rightArrow = false;
 
@@ -229,6 +231,13 @@ function draw() {
   drawBall();
 
   drawBricks();
+
+  // show score
+  showGameStats(SCORE, textX, textY, img, imgX, imgY);
+  // show lifes
+  showGameStats(LIFE, textX, textY, img, imgX, imgY);
+  // show level
+  showGameStats(LEVEL, textX, textY, img, imgX, imgY);
 }
 
 // update game function
