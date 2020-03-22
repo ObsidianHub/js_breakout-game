@@ -100,14 +100,17 @@ function moveBall() {
 function ballWallCollision() {
   if (ball.x + ball.radius > cvs.width || ball.x - ball.radius < 0) {
     ball.dx = -ball.dx;
+    WALL_HIT.play();
   }
 
   if (ball.y - ball.radius < 0) {
     ball.dy = -ball.dy;
+    WALL_HIT.play();
   }
 
   if (ball.y + ball.radius > cvs.height) {
     LIFE--; // lose life
+    LIFE_LOST.play();
     resetBall();
   }
 }
@@ -128,6 +131,9 @@ function ballPaddleCollision() {
     paddle.y < paddle.y + paddle.height &&
     ball.y > paddle.y
   ) {
+    // play sound
+    PADDLE_HIT.play();
+
     // check where the ball hit the paddle
     let collidePoint = ball.x - (paddle.x + paddle.width / 2);
 
@@ -205,6 +211,7 @@ function ballBrickCollision() {
           ball.y + ball.radius > b.y &&
           ball.y - ball.radius < b.y + brick.height
         ) {
+          BRICK_HIT.play();
           ball.dy = -ball.dy;
           b.status = false; // the brick is broken
           SCORE += SCORE_UNIT;
@@ -260,6 +267,8 @@ function levelUp() {
   }
 
   if (isLevelDone) {
+    WIN.play();
+
     if (LEVEL >= MAX_LEVEL) {
       GAME_OVER = true;
       return;
