@@ -313,3 +313,18 @@ function loop() {
 }
 
 loop();
+
+// select sound element
+const soundElement = document.getElementById("sound");
+
+soundElement.addEventListener("click", audioManager);
+
+function audioManager() {
+  // change image sound ON/OFF
+  let imgSrc = soundElement.getAttribute("src");
+  let SOUND_IMG = (imgSrc = "img/SOUND_ON.png"
+    ? "img/SOUND_OFF.png"
+    : "img/SOUND_ON.png");
+
+  soundElement.setAttribute("src", SOUND_IMG);
+}
